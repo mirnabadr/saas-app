@@ -24,9 +24,6 @@ export const metadata: Metadata = {
   description: 'Real-time AI Teaching Platform',
 }
 
-// Force dynamic rendering if Clerk key is missing to prevent build errors
-export const dynamic = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ? 'auto' : 'force-dynamic';
-
 export default function RootLayout({
   children,
 }: Readonly<{
