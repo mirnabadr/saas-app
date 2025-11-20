@@ -62,8 +62,69 @@
   * {
     @apply border-border;
   }
-  body {
+  html, body {
     @apply bg-background text-foreground;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .bordered-table {
+    border-collapse: collapse;
+  }
+  
+  .bordered-table thead tr,
+  .bordered-table tbody tr {
+    border: none !important;
+  }
+  
+  .bordered-table th,
+  .bordered-table td {
+    border: none !important;
+  }
+  
+  .subject-pill {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    border-radius: 9999px;
+    padding: 4px 18px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: capitalize;
+  }
+  
+  .cta-card {
+    background-color: #232325;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    color: white;
+  }
+  
+  .cta-badge {
+    background-color: #FFD600;
+    color: black;
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    display: inline-block;
+  }
+  
+  @keyframes soundWave {
+    0%, 100% {
+      transform: scaleY(0.4);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+  
+  .sound-bar {
+    transform-origin: center;
   }
 }
 

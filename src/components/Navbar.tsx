@@ -4,6 +4,7 @@ import Image from "next/image";
 import NavItems from "./NavItems";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -34,24 +35,17 @@ const Navbar = () => {
           Home
         </Link>
         <NavItems />
-        <Link 
-          href="/subscription" 
-          className={cn(
-            "hover:text-primary transition-colors text-base font-medium",
-            pathname === "/subscription" ? "text-primary font-semibold" : "text-muted-foreground"
-          )}
-        >
-          Subscription
-        </Link>
-        <Link 
-          href="/sign-in" 
-          className={cn(
-            "hover:text-primary transition-colors text-base font-medium",
-            pathname === "/sign-in" ? "text-primary font-semibold" : "text-muted-foreground"
-          )}
-        >
-          Sign In
-        </Link>
+        <SignedOut>
+          <Link 
+            href="/sign-in" 
+            className="bg-white border border-gray-300 rounded-full px-4 py-2 text-base font-medium text-foreground hover:bg-gray-50 transition-colors cursor-pointer"
+          >
+            Sign In
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </nav>
   )
