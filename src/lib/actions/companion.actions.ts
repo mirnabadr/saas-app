@@ -1,6 +1,6 @@
 'use server';
 
-import { createClientSupabase } from "@/lib/supabase";
+import { createClientSupabase, createPublicSupabaseClient } from "@/lib/supabase";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -45,7 +45,7 @@ type GetAllCompanions = {
 };
 
 export const getAllCompanions = async ({limit = 10, page = 1, subject, topic}: GetAllCompanions) => {
-    const supabase = createClientSupabase();
+    const supabase = createPublicSupabaseClient();
     
     let query = supabase.from('companions').select('*');
     if (subject && topic) {
@@ -65,7 +65,7 @@ export const getAllCompanions = async ({limit = 10, page = 1, subject, topic}: G
     return companions;
 }
 export const getCompanion = async (id: string) => {
-    const supabase = createClientSupabase();
+    const supabase = createPublicSupabaseClient();
      const {data, error} = await supabase
         .from('companions')
         .select('*')
@@ -90,7 +90,7 @@ export const addToSessionHistory = async (companionId: string) => {
 }
 
 export const getRecentSessions = async (limit = 10) => {
-    const supabase = createClientSupabase();
+    const supabase = createPublicSupabaseClient();
     const { data, error } = await supabase
         .from('session_history')
         .select('id, created_at, companions: companion_id(*)')

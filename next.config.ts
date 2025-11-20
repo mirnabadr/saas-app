@@ -6,10 +6,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true, 
     tsconfigPath: "./tsconfig.json",
   },
-  // @ts-ignore
-  eslint: { 
-    ignoreDuringBuilds: true,
-  },
   images: {
       remotePatterns: [
           { hostname: 'img.clerk.com'}
